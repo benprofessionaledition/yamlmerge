@@ -2,4 +2,7 @@ module configgen
 
 go 1.12
 
-require gopkg.in/yaml.v2 v2.2.2 // indirect
+require (
+	github.com/akamensky/argparse v0.0.0-20190309155458-28b0496b54cb
+	gopkg.in/yaml.v2 v2.2.2
+)

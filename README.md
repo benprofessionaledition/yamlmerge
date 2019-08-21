@@ -17,7 +17,7 @@ envs:
       endpoint: http://test.foo.com
 ```
 
-run `go build main.go test configurations/` to make a `configurations/test.yaml` that looks like this:
+run `go build main.go --role test --output configurations/` to make a `configurations/test.yaml` that looks like this:
 
 ```
 port: 5000
@@ -25,3 +25,5 @@ endpoint: http://test.foo.com
 ```
 
 That's it. No Helm, no ktempl, no config servers, no bullshit. 
+
+Other options include `--getroles` to show all roles and exit, and `--input` to specify an alternative input path. 
