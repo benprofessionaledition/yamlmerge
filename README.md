@@ -24,4 +24,4 @@ port: 5000
 endpoint: http://test.foo.com
 ```
 
-That's it. No Helm, ktempl, no config servers, no bullshit. 
+That's it. No Helm, no ktempl, no config servers, no bullshit. 
