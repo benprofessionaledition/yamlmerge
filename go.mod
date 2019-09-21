@@ -1,4 +1,4 @@
-module configgen
+module yamlmerge
 
 go 1.12
 
