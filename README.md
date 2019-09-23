@@ -1,7 +1,7 @@
 # yamlmerge
 This is a simple tool that recursively merges two root nodes of a yaml tree and spits the output to stdout. While this isn't exactly rocket science, and can be accomplished 
 easily with Python or Perl, this project is written in Go so that it can be compiled to a small standalone binary suitable for use in containers.
-##Installation
+## Installation
 First you need to [install Go 1.12+](https://golang.org/doc/install)
 
 To compile the code:
@@ -18,7 +18,7 @@ make darwin
 
 These scripts will put a binary in `bin/linux/yamlmerge` or `bin/darwin/yamlmerge`, respectively
 
-##Usage
+## Usage
 Given a file `app.yaml` that looks like this: 
 ```
 default:
