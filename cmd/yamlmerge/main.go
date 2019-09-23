@@ -1,15 +1,14 @@
 package main
 
 import (
-	"flag"
 	"fmt"
+	"github.com/docopt/docopt-go"
 	"gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
 	"os"
 	"reflect"
 	"strings"
-	"github.com/docopt/docopt-go"
 )
 
 // exists returns whether the given file or directory exists
