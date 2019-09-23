@@ -6,17 +6,11 @@ First you need to [install Go 1.12+](https://golang.org/doc/install)
 
 To compile the code:
 
-linux:
 ```
-make linux
-```
-
-mac os:
-```
-make darwin
+make all
 ```
 
-These scripts will put a binary in `bin/linux/yamlmerge` or `bin/darwin/yamlmerge`, respectively
+This will detect your OS (MacOS or Linux only) and put a binary in `bin/yamlmerge` 
 
 ## Usage
 Given a file `app.yaml` that looks like this: 
