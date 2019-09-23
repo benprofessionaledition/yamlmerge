@@ -9,24 +9,52 @@ import (
 	"os"
 	"reflect"
 	"strings"
+	"github.com/docopt/docopt-go"
 )
 
 // exists returns whether the given file or directory exists
 func exists(path string) (bool, error) {
 	_, err := os.Stat(path)
-	if err == nil { return true, nil }
-	if os.IsNotExist(err) { return false, nil }
+	if err == nil {
+		return true, nil
+	}
+	if os.IsNotExist(err) {
+		return false, nil
+	}
 	return true, err
 }
 
 func main() {
-	var inputFile, defaultRole, role string
-	var getroles bool
-	flag.StringVar(&inputFile, "input", "", "Path to the input file")
-	flag.StringVar(&role, "override", "", "The root name containing override values")
-	flag.StringVar(&defaultRole, "default", "default", "The root containing all the default values")
-	flag.BoolVar(&getroles, "get-roots", false, "If true, will print available root nodes in the input file specified and exit")
-	flag.Parse()
+	// config stuff
+	usage := `YAML Merge
+
+Usage:
+	yamlmerge <input> <base> <override> [--get-roots]
+	yamlmerge -h | --help
+	yamlmerge --version
+
+Options:
+	<input>	The input yaml file
+	<base> The name of the base node whose values you'll be overriding.
+	<override> The root node containing values that will override those of the base node
+	--get-roots	Will print all available root-level nodes to the console and then exit normally
+	-h --help	Show this screen.
+	--version	Show version.
+`
+
+	arguments, _ := docopt.ParseDoc(usage)
+	var config struct {
+		Input    string `docopt:"<input>"`
+		Base     string `docopt:"<base>"`
+		Override string `docopt:"<override>"`
+		GetRoles bool   `docopt:"--get-roles"`
+	}
+	arguments.Bind(&config)
+
+	inputFile := config.Input
+	defaultRole := config.Base
+	role := config.Override
+	getroles := config.GetRoles
 
 	// define defaults for empty values
 	if ok, err := exists(inputFile); !ok {
