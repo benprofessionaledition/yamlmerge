@@ -1,10 +1,12 @@
 .PHONY: darwin linux all
 
-darwin:
-	cd cmd/yamlmerge && GOOS=darwin GOARCH=amd64 go build -v -o  ../../bin/darwin/yamlmerge .
+darwin: Darwin
+Darwin:
+	cd cmd/yamlmerge && GOOS=darwin GOARCH=amd64 go build -v -o  ../../bin/yamlmerge .
 
-linux:
-	cd cmd/yamlmerge && GOOS=linux GOARCH=amd64 go build -a -ldflags '-extldflags "-static"' -v -o ../../bin/linux/yamlmerge .
+linux:Linux
+Linux:
+	cd cmd/yamlmerge && GOOS=linux GOARCH=amd64 go build -a -ldflags '-extldflags "-static"' -v -o ../../bin/yamlmerge .
 
-all: darwin linux
-
+all:
+	make `uname -s`
